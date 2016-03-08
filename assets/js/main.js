@@ -11,22 +11,45 @@ $(function(){
             });
         }
 
-        // Proverb Changer
-        var cnt=0, texts=[];
         // save the texts in an array for re-use
-        $(".textContent").each(function() {
-            texts[cnt++]=$(this).text();
-        });
-        slide();
+        loadProverbs()
+            .done(
+                function(data, status, jqXHR) {
+                    proverbs = data;
+                    $.each(proverbs.inspirationalProverbs, function(i, proverb) {
+                        texts[cnt++]=proverb;
+                    });
+                    slide();
+                }
+            )
+            .fail(
+                function(jqXHR,status,err) {
+                    alert("Error loading Proverb Data " + err);
+                }
+            )
     });
 
-    function slide() {
+    var proverbs;// Proverb Changer
+    var cnt=0, texts=[];
+    
+    var loadProverbs = function() {
+        return $.ajax({
+            type: 'GET',
+            url: 'data/InspirationalProverbs.json',
+            async: true,
+            //jsonpCallback: 'jsonCallback',
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json'
+        });
+    }
+
+    var slide = function() {
         if (cnt>=texts.length) cnt=0;
         $('#fadingProverbs').html(texts[cnt++]);
         $('#fadingProverbs')
-            .fadeIn('slow').animate({opacity: 1.0}, 3000).fadeOut('slow',
+            .fadeIn('slow').animate({opacity: 1.0}, 10000).fadeOut('slow',
             function() {
-                return slide()
+                return slide();
             }
         );
     }
