@@ -2839,12 +2839,13 @@ button.mfp-arrow:active {
 }
 
 #contact .contact-details .speech-bubble h4 {
-  padding-top: 50px;
+  padding-top: 0px;
   font-size: 30px;
   font-weight: 700;
   text-transform: uppercase;
   text-align: center;
-  letter-spacing: 1px;
+  letter-spacing: 0px;
+  padding-bottom: 15px;
 }
 
 #contact .contact-details h2 {
@@ -2864,6 +2865,25 @@ button.mfp-arrow:active {
   height: 4px;
 }
 
+.sayHello {
+-moz-border-radius: 90px;
+    width: 125px;
+    height: 125px;
+    border-radius: 70px;
+    outline: 0;
+    z-index: 6;
+    background-color: transparent;
+    border-style: none;   
+}
+
+.speech-bubble{
+    display: flex;
+}
+
+.icon-Speach-Bubble11 {
+    right: 21px;
+    bottom: 23px;
+}
 
 /*---------------------------------------------------------------------*/
 /*  6.13. SECTION - BLOG
