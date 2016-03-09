@@ -47,7 +47,7 @@ $(function(){
         if (cnt>=texts.length) cnt=0;
         $('#fadingProverbs').html(texts[cnt++]);
         $('#fadingProverbs')
-            .fadeIn('slow').animate({opacity: 1.0}, 10000).fadeOut('slow',
+            .fadeIn('slow').animate({opacity: 1.0}, 8000).fadeOut('slow',
             function() {
                 return slide();
             }
