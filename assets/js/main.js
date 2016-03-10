@@ -111,7 +111,7 @@ $(function(){
              * on one of the menu items.
              */
             if(!$(this).parent().hasClass('dropdown')){
-                $('.berg-collapse').collapse('hide');
+                $('.Chouhan-collapse').collapse('hide');
             }
         });
     };
@@ -356,29 +356,30 @@ $(function(){
     $(window).smartload(function(){
         barChart();
     });
-    
+
     // Call barChart() when window is resized.
     $(window).smartresize(function(){
         barChart();
     });
-    
+
     
     /*-------------------------------------------------------------------*/
     /*  15. Milestones counter.
     /*-------------------------------------------------------------------*/
+
     var counter = function (){
         var number = $('.milestones').find('.number');
-        
+
         if ($.fn.countTo){
             number.countTo({
                 speed: 3000
             });
         }
     };
-    
+
     if (jQuery.browser.mobile === false){
         var number = $('.milestones .number');
-        
+
         number.one('inview', function(isInView) {
             if (isInView){
                 counter();

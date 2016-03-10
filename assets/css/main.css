@@ -1791,6 +1791,10 @@ button.mfp-arrow:active {
   text-align: center;
 }
 
+.college-title {
+  text-align: right;
+}
+
 @media (min-width: 768px) {
   #resume h3 {
     text-align: left;
@@ -2969,7 +2973,7 @@ button.mfp-arrow:active {
   height: 55px;
   text-align: center;
   background-color: #006ca3;
-  border-bottom: 2px solid #970837;
+  border-bottom: 2px solid #004A70;
   opacity: 0.8;
 }
 
@@ -3008,7 +3012,7 @@ footer.footer .page-scroll > a {
   font-size: 24px;
   text-align: center;
   border-radius: 4px;
-  box-shadow: 0 3px 0 #970837;
+  box-shadow: 0 3px 0 #004A70;
 }
 
 footer.footer ul.social-icons {
