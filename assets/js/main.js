@@ -26,7 +26,10 @@ $(function(){
                 function(jqXHR,status,err) {
                     alert("Error loading Proverb Data " + err);
                 }
-            )
+            );
+
+        // Do not show the contact form initially
+        $(".contact-form").css('display', 'none');
     });
 
     var proverbs;// Proverb Changer
@@ -41,7 +44,7 @@ $(function(){
             contentType: "application/json; charset=utf-8",
             dataType: 'json'
         });
-    }
+    };
 
     var slide = function() {
         if (cnt>=texts.length) cnt=0;
@@ -376,6 +379,136 @@ $(function(){
             });
         }
     };
+
+
+    /*-------------------------------------------------------------------*/
+    /*  16. Contact Form.
+    /*-------------------------------------------------------------------*/
+
+    /*var sayHello = function(formData) {
+        return $.ajax({
+            url: 'services/contact/sendEmail.php',
+            data: formData,
+            method: 'POST',
+            async: true,
+            dataType:'html'
+        });
+    };
+
+    $('.submit').click(function(e){
+        e.preventDefault();
+        e.stopPropagation();
+
+        sayHello($("#contact-form").serialize())
+            .done(function(responseText){
+                alert("Success " + responseText);
+            })
+            .fail(function(responseText, jqXHR){
+                alert("Failed " + responseText);
+            });
+    });*/
+
+    $(".sayHello").click(function(e){
+        $(".contact-details").toggle();
+        $(".contact-form").css('display', 'inline');
+    });
+
+
+    /*-------------------------------------------------------------------*/
+    /*  17. Download Resume GeoLocation Restriction.
+     /*-------------------------------------------------------------------*/
+
+    $(".downloadResumeAnchor").click(function(e){
+        if(e.currentTarget.text === "Request Resume"){
+            window.open("#contact", "_self");
+            return;
+        }
+        e.preventDefault();
+        //"http://ip-api.com/json/?callback=?"
+        var gotLocation = false;
+        $.getJSON("http://freegeoip.net/json/?callback=?", function(data) {
+            gotLocation = true;
+            if((data.country_code === 'CA' && data.country_name === "United States" && data.time_zone === "America/New_York")
+                && (data.region_code === "NJ" || data.region_code === "NY")
+                && (data.region_name === "New Jersey" || data.region_name === "New York")){
+                window.open("data/Chouhan.docx", '_self');
+
+                setTimeout(function(){
+                    BootstrapDialog.show({
+                        id: 'downloadResumeDialog',
+                        type: BootstrapDialog.TYPE_PRIMARY,
+                        title: 'Gracias !',
+                        message: 'Thanks for having my resume. Hope to hear back from you soon.',
+                        closable: false
+                    });
+
+                }, 1000);
+
+                setTimeout(function(){
+                    $(".modal-dialog").fadeTo(500,0).slideUp(500, function(){
+                        $("#downloadResumeDialog").modal('hide');
+                    })
+                }, 4000);
+            }
+            else {
+                BootstrapDialog.show({
+                    id: 'downloadResumeDialog',
+                    type: BootstrapDialog.TYPE_PRIMARY,
+                    title: 'Oops !!!',
+                    message: 'Seems like you are out of NY/NJ States. I am looking for remote projects or if physical, then in NYC & NJ only. ' +
+                    'However, I can revert back to you shortly upon request.',
+                    closable: false
+                });
+
+                setTimeout(function(){
+                    $(".modal-dialog").fadeTo(2000,500).slideUp(500, function(){
+                        $("#downloadResumeDialog").modal('hide');
+                    });
+                    $("a.downloadResumeAnchor").text("Request Resume");
+                }, 5000);
+            }
+        })
+            .fail(function() {
+                console.log( "error" );
+                BootstrapDialog.show({
+                    id: 'downloadResumeDialog',
+                    type: BootstrapDialog.TYPE_PRIMARY,
+                    title: 'Oops !!!',
+                    message: 'Seems there occurred some error. Please try again in sometime.',
+                    closable: false
+                    /*buttons: [{
+                         label: 'Ok',
+                         action: function (dialogRef) {
+                         dialogRef.close();
+                         }
+                     }]*/
+                });
+
+                setTimeout(function(){
+                    $(".modal-dialog").fadeTo(2000,500).slideUp(500, function(){
+                        $("#downloadResumeDialog").modal('hide');
+                    })
+                }, 5000);
+            });
+        setTimeout(function() {
+            if (!gotLocation)
+            {
+                BootstrapDialog.show({
+                    id: 'downloadResumeDialog',
+                    type: BootstrapDialog.TYPE_PRIMARY,
+                    title: 'Oops !!!',
+                    message: 'Looks like you\'ve AdBlocker enabled, please disable and try again.',
+                    closable: false
+                });
+
+                setTimeout(function(){
+                    $(".modal-dialog").fadeTo(2000,500).slideUp(500, function(){
+                        $("#downloadResumeDialog").modal('hide');
+                    })
+                }, 2000);
+            }
+        }, 500);
+    });
 
     if (jQuery.browser.mobile === false){
         var number = $('.milestones .number');

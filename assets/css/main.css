@@ -195,11 +195,24 @@ h6 {
 /*  2.2. DIVIDER
 /*---------------------------------------------------------------------*/
 span.divider {
-  display: block;
+/*  display: block;
   margin: 35px 0px;
   width: 150px;
   height: 2px;
-  background-color: #006ca3;
+  background-color: #006ca3;*/
+
+  margin-top: 3.5rem;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjAuNSIgeDI9IjEuMCIgeTI9IjAuNSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjNTk1MzhkIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZmZmZmZmIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #666096),color-stop(50%, #ffffff),color-stop(100%, #666096));
+  background-image: -webkit-linear-gradient(left, #666096 0%,#ffffff 50%,#666096 100%);
+  background-image: -webkit-linear-gradient(left, #666096 0%,#ffffff 50%,#666096 100%);
+  background-image: linear-gradient(to right, #666096 0%,#ffffff 50%,#666096 100%);
+  border: none;
+  height: 1px;
+  display: block;
+  margin: 35px 0px;
+  max-width: 480px;
 }
 
 span.divider.center {
@@ -472,7 +485,10 @@ header.hero .hero-body .hero-text h1 {
 
 @media (min-width: 768px) {
   header.hero .hero-body .hero-text h1 {
-    font-size: 68px;
+    font-family: 'Josefin Sans';
+    font-size: 60px;
+    color: rgb(255,255,255);
+    letter-spacing: normal;
   }
 }
 
@@ -491,7 +507,11 @@ header.hero .hero-body .hero-text h1.small {
 
 @media (min-width: 768px) {
   header.hero .hero-body .hero-text h1.small {
-    font-size: 66px;
+    font-family: 'Josefin Sans';
+    font-size: 35px;
+    font-weight: normal;
+    color: rgb(255,255,255);
+    letter-spacing: normal;
   }
 }
 
@@ -542,6 +562,10 @@ header.hero .hero-body .hero-text h1.small > span.blinker:before {
 header.hero .hero-body .hero-text p {
   margin-top: 10px;
   font-size: 20px;
+  display: block;
+  font-family: 'Josefin Sans';
+  font-weight: normal;
+  color: rgb(255, 255, 255);
 }
 
 header.hero .hero-body .hero-text .page-scroll {
@@ -946,7 +970,6 @@ header.hero.owl-bg-carousel-yes .owl-theme .owl-controls .owl-page.active span {
 .section .section-title {
   margin-bottom: 20px;
   font-size: 35px;
-  text-transform: uppercase;
   letter-spacing: 1px;
 }
 
@@ -1002,7 +1025,7 @@ header.hero.owl-bg-carousel-yes .owl-theme .owl-controls .owl-page.active span {
 
 .section.bg-image-yes .container-fluid.section-wrapper > .section-content:before {
   position: absolute;
-  content: '';
+  /*content: '';*/
   top: 0;
   left: 0;
   width: 100%;
@@ -2829,7 +2852,7 @@ button.mfp-arrow:active {
 
 #contact .contact-details .speech-bubble {
   position: relative;
-  width: 170px;
+  width: 130px;
   height: 170px;
   margin: auto;
 }
@@ -2863,11 +2886,11 @@ button.mfp-arrow:active {
   margin-top: 10px;
 }
 
-#contact .contact-details span.divider {
+/*#contact .contact-details span.divider {
   margin-bottom: 20px;
   width: 60px;
   height: 4px;
-}
+}*/
 
 .sayHello {
 -moz-border-radius: 90px;
@@ -3070,4 +3093,37 @@ footer.footer .copyright {
 
 footer.footer .copyright p {
   font-size: 14px;
+}
+
+@media (min-width: 768px){
+  .modal-dialog {
+    width: 500px;
+    color: #004a70;
+  }
+}
+
+@media (min-width: 768px){
+  .bootstrap-dialog.type-primary .modal-header {
+    background-color: #004a70 !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .iAmAmazing {
+    width: 58%;
+    /* height: 40%; */
+    font-size: 20px;
+    /* background: -webkit-linear-gradient(#0F3, #F00); */
+    background: -webkit-linear-gradient(red, orange, brown, green, blue, indigo, violet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    line-height: 34px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .iAmTitle{
+    text-align: center;
+  }
 }

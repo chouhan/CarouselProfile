@@ -49,18 +49,21 @@ $(function(){
         $.ajax({
             url: $('#contact-form').attr('action'),
             type: 'post',
-            dataType: 'json',
-            data: $(this).serialize(),
+            dataType: 'html',
+            data: $("#contact-form").serialize(),
             success: function(data){
-                if (data == true){
+                //if (data == true){
+                if (data == "true"){
                     $('#contact-form button').html("<i class='icon-Paper-Plane'></i> " + okMessage);
                     $('#contact-form')[0].reset();
                 } else {
                     $('#contact-form button').html("<i class='icon-Danger'></i> " + errorMessage);
                 }
-                
+
                 setTimeout(function(){
                     $('#contact-form button').html(buttonCopy);
+                    $(".contact-details").toggle();
+                    $(".contact-form").css('display', 'none');
                 }, 3000);
             },
             error: function(xhr, err){
