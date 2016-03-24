@@ -3114,7 +3114,7 @@ footer.footer .copyright p {
     /* height: 40%; */
     font-size: 20px;
     /* background: -webkit-linear-gradient(#0F3, #F00); */
-    background: -webkit-linear-gradient(red, orange, brown, green, blue, indigo, violet);
+    background: -webkit-linear-gradient(aliceblue, orange, bisque, lightgray, lightblue, steelblue, violet);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-align: center;
